@@ -4,19 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Matching Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'blue-glow': '0 0 15px rgba(59, 130, 246, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        #game-board img {
+            width: 320px;  /* Increased width */
+            height: 200px; /* Adjusted height for landscape */
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            #game-board img {
+                width: 280px;
+                height: 175px;
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h1>MEME MATCHING GAME</h1>
-        <p class="instructions">
-            Welcome to the Meme Matching Game!  Flip over two cards at a time and try to find all the matching pairs. Be quick and remember where you saw the cards!
+<body class="bg-black text-white min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-7xl">
+        <!-- Header Section with increased spacing -->
+        <h1 class="text-5xl md:text-7xl font-bold text-center mb-12 tracking-wider text-blue-500">
+            MEME MATCHING GAME
+        </h1>
+
+        <!-- Instructions Section -->
+        <p class="text-lg md:text-xl text-gray-300 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
+            Welcome to the Meme Matching Game! Flip over two cards at a time and try to find all the matching pairs. Be quick and remember where you saw the cards!
         </p>
-        <button id="start-game">Start Game</button>
-        <div id="game-board" class="game-board">
+
+        <!-- Start Button with increased spacing -->
+        <div class="text-center mb-16">
+            <button id="start-game" 
+                    class="bg-blue-600 text-white px-12 py-5 text-2xl font-semibold 
+                           hover:bg-blue-700 transform hover:-translate-y-1 transition-all duration-200
+                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                           shadow-blue-glow">
+                Start Game
+            </button>
+        </div>
+
+        <!-- Game Board with adjusted grid for landscape cards -->
+        <div id="game-board" 
+             class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-7xl mx-auto p-6 bg-gray-900
+                    border border-blue-500/30">
             <!-- Cards will be generated here -->
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
